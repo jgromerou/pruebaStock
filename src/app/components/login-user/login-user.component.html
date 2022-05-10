@@ -1,0 +1,29 @@
+<div>
+  <div class="jumbotron">
+    <h1><i class="fa fa-shopping-cart"></i> ABM Stock</h1>
+  </div>
+  <form [hidden]="enviado" class="marginUp" #userForm="ngForm" >
+    <div class="form-group col-md-4 center ">
+      <label>Usuario</label>
+      <input type="text" class="form-control" id="user" name="user" required [(ngModel)]="usuario.nombre" placeholder="Ingrese su usuario" #user="ngModel">
+      <div [hidden]="user.valid || user.pristine" class="alert alert-danger">
+        El usuario es obligatorio
+      </div>
+    </div>
+    <div class="form-group col-md-4 center">
+      <label>Clave</label>
+      <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="usuario.clave" placeholder="Ingrese su clave" #clave="ngModel">
+      <div [hidden]="clave.valid || clave.pristine" class="alert alert-danger">
+        La clave es obligatoria
+      </div>
+      <br>
+      <button type="submit" (click)="ingresar()" class="btn btn-primary" [disabled]="!userForm.form.valid">Ingresar</button>
+    </div>
+  </form>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    Usuario o clave incorrectos. Por favor, verifique y reintente
+  </div>
+  <div class="alert alert-info" role="alert">
+    <small>admin/admin rol superusuario | compra/compra rol Sector Compras | vende/vende rol Sector Ventas</small>
+  </div>
+</div>
